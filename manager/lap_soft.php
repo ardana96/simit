@@ -151,7 +151,7 @@ $durasi = 0;
 if($tglRequest == ""|| $tglRequest == null){
 	$durasi = 0;
 }else{
-	$durasi = selisihHari($tglRequest,$tgl);
+	$durasi = selisihHari($tglRequest,$tgl2);
 	//$durasi = 2;
 }
 
