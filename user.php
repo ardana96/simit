@@ -1,4 +1,10 @@
- <?
+<?
+// if (headers_sent($file, $line)) {
+//     die("Header sudah dikirim di $file pada baris $line");
+// }
+session_start();
+
+
 // $pathAwal = "C:/xampp/htdocs/simit/backup/backup.sql";
 // $pathTujuan = "D:/backupsimit/backup.sql";
 // copy($pathAwal, $pathTujuan);  
@@ -9,6 +15,8 @@
 // copy($pathAwal2, $pathTujuan2);  
 // ?>
 <?
+// ob_start(); 
+// session_start();
 include('config.php');
 $tgll=date('20y-01-01');
 
@@ -99,7 +107,7 @@ $tgll=date('20y-01-01');
                 <header class="navbar-header">
 
               
-                    <img src="assets/img/logo3.png" width=100 height=40 alt=""/>
+                <img src="assets/img/logo3.png" width=100 height=40 alt=""/>
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -145,25 +153,18 @@ $tgll=date('20y-01-01');
                     </a>
                     <ul class="collapse" id="component-nav">
                        
-						<li class=""><a href="user.php?menu=supplier"><i class="icon-angle-right"></i>  Supplier</a></li>
-						<li class=""><a href="user.php?menu=kategori"><i class="icon-angle-right"></i>  Kategori</a></li>                        
+                        <li class=""><a href="user.php?menu=supplier"><i class="icon-angle-right"></i>  Supplier</a></li>
+ <li class=""><a href="user.php?menu=kategori"><i class="icon-angle-right"></i>  Kategori</a></li>                        
 						<li class=""><a href="user.php?menu=barang"><i class="icon-angle-right"></i>  Barang</a></li>
-						<li><a href="user.php?menu=printer"><i class="icon-angle-right"></i>  Printer</a></li>
-						<li><a href="user.php?menu=scanner"><i class="icon-angle-right"></i>  Scanner</a></li>
-						<li class=""><a href="user.php?menu=bagian"><i class="icon-angle-right"></i>  Bagian (Pengambilan)</a></li>
-						<li class=""><a href="user.php?menu=bagian_pemakai"><i class="icon-angle-right"></i>  Bagian (Perawatan)</a></li>
-						<li class=""><a href="user.php?menu=lokasi"><i class="icon-angle-right"></i>  Lokasi</a></li>
-						<li class=""><a href="user.php?menu=subbagian"><i class="icon-angle-right"></i>  Sub Bagian</a>
-							<ul class="collapse" id="component-nav">
-								<li class=""><a href="user.php?menu=subbagian"><i class="icon-angle-right"></i>  Sub Bagian</a>
-							</ul>
-						
-						</li>
-                        <li class=""><a href="user.php?menu=peripheral"><i class="icon-angle-right"></i>  Peripheral</a></li>
+						   <li><a href="user.php?menu=printer"><i class="icon-angle-right"></i>  Printer</a></li>
+					      <li><a href="user.php?menu=scanner"><i class="icon-angle-right"></i>  Scanner</a></li>
+						         <li class=""><a href="user.php?menu=bagian"><i class="icon-angle-right"></i>  Bagian (Pengambilan)</a></li>
+                   <li class=""><a href="user.php?menu=bagian_pemakai"><i class="icon-angle-right"></i>  Bagian (Perawatan)</a></li>
+                   <li class=""><a href="user.php?menu=lokasi"><i class="icon-angle-right"></i>  Lokasi</a></li>
+                   <li class=""><a href="user.php?menu=subbagian"><i class="icon-angle-right"></i>  Sub Bagian</a></li>
+                   <li class=""><a href="user.php?menu=peripheral"><i class="icon-angle-right"></i>  Peripheral</a></li>
                         <li class=""><a href="user.php?menu=perawatan"><i class="icon-angle-right"></i>  Perawatan</a></li>
-						
-						
-						<!--<li class=""><a href="user.php?menu=stockawalth"><i class="icon-angle-right"></i>  Stock Awal Tahun</a></li>-->
+				    <!--<li class=""><a href="user.php?menu=stockawalth"><i class="icon-angle-right"></i>  Stock Awal Tahun</a></li>-->
              
                     </ul>
                 </li>
@@ -324,7 +325,7 @@ $tgll=date('20y-01-01');
                     </a>
                     <ul class="collapse" id="error-nav">
                         <li><a href="user.php?menu=rpemakaipc"><i class="icon-angle-right"></i>  Daftar Pemakai PC </a></li>
-						<li><a href="user.php?menu=rpemakaipcV2"><i class="icon-angle-right"></i>  Daftar Pemakai PC V2</a></li>
+						<li><a href="user.php?menu=rpemakaipcV2"><i class="icon-angle-right"></i>  Daftar Pemakai PC 2</a></li>
                         <li><a href="user.php?menu=ipcras"><i class="icon-angle-right"></i>  Daftar IP Sama </a></li>
                      
                     </ul>
@@ -364,7 +365,8 @@ $tgll=date('20y-01-01');
         		<!-- <li><a href="#" onclick="popup_print(6)"><i class="icon-angle-right"></i> Peminjaman</a></li>-->
                         <!-- <li><a href="#" onclick="popup_print(9)"><i class="icon-angle-right"></i>  Jadwal Perawatan</a></li>
 						<li><a href="#" onclick="popup_print(26)"><i class="icon-angle-right"></i>  Jadwal Perawatan 2</a></li> -->
-						<li class="">
+
+                        <li class="">
 							<a href="#" data-parent="#chart-nav" data-toggle="collapse" class="accordion-toggle" data-target="#lit-nav">
 								<i class="icon-angle-right"></i> <b>Jadwal Perawatan</b>
 							   
@@ -388,10 +390,6 @@ $tgll=date('20y-01-01');
 							</ul>
 						
 						</li>
-						
-						
-						
-						
                         <li><a href="#" onclick="popup_print(10)"><i class="icon-angle-right"></i>  Daftar Pemakai PC</a></li>
                         <li><a href="#" onclick="popup_print(15)"><i class="icon-angle-right"></i>  Printer</a></li>
                         <li><a href="#" onclick="popup_print(19)"><i class="icon-angle-right"></i> Laptop</a></li>
@@ -496,7 +494,13 @@ $tgll=date('20y-01-01');
                    
                     </ul>
                 </li>-->
-							 
+                <?php if ($_SESSION['akses'] == 'super admin') {  ?> 
+                <li class="panel">
+                    <a href="user.php?menu=users">
+                        <i class="icon-user"> </i> User
+                    </a>
+                </li>
+                <?php } ?>
 							 
 	  <li><a href="aplikasi/login_out.php" onclick="return confirm('Terima Kasih telah menggunakan manual guide ini, Yakin Mau Keluar ?')"><i class="icon-signout"></i> Logout </a>
                             </li>
@@ -604,7 +608,7 @@ case('barang'); include('aplikasi/barang.php'); break;
 case('peripheral'); include('aplikasi/peripheral.php'); break;
 case('perawatan'); include('aplikasi/perawatan/perawatan.php'); break;
 case('perawatanapp'); include('aplikasi/perawatan_app/index.php'); break;
-
+case('users'); include('aplikasi/user/user.php'); break;
 } }
 ?>
 
@@ -651,7 +655,7 @@ $date=date('20y-m-d');
 $user_database="root";
 $password_database="dlris30g";
 $server_database="localhost";
-$nama_database="sit";
+$nama_database="sitag";
 $koneksi=mysql_connect($server_database,$user_database,$password_database);
 if(!$koneksi){
 die("Tidak bisa terhubung ke server".mysql_error());}
@@ -672,7 +676,7 @@ $isi=mysql_query("insert into tbackup (tgl) values ('$date')");
 	$file='backup.sql';
 	
 	//panggil fungsi dengan memberi parameter untuk koneksi dan nama file untuk backup
-	backup_tables("localhost","root","","sit",$file);
+	backup_tables("localhost","root","","sitag",$file);
 
 				
 				}

@@ -16,7 +16,7 @@ $pemakai=$data['user'];
 $password=$data['password'];
 $akses=$data['akses'];
 
-if($akses=='admin'){	
+if($akses=='admin' || $akses=='super admin'){	
 header('location:../user.php?menu=homeadmin');
 $_SESSION['user']=$pemakai;
 $_SESSION['akses']=$akses;
@@ -35,6 +35,13 @@ header('location:../iso.php?menu=home');
 $_SESSION['user']=$pemakai;
 $_SESSION['akses']=$akses;
 }
+// else if($akses=='super admin'){
+//     header('location:../superadmin.php?menu=homeadmin');
+//     //if($pass==($password)){
+    
+//     $_SESSION['user']=$pemakai;
+//     $_SESSION['akses']=$akses;
+// }
 //header('location:../admin.php?menu=home');}
 
 else{ header('location:../index.php?stt= Mohon Maaf User / Password Keliru ');}}
