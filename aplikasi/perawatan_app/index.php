@@ -152,7 +152,7 @@ $conn = $koneksi;
                                 
                                 
                                 <th>PIC</th>
-                                <th>Ketrangan</th>
+                                <th>Keterangan</th>
                                 <th>Perangkat</th>
                                 
                             </tr>
@@ -177,43 +177,49 @@ $conn = $koneksi;
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <!-- <p><strong>Perangkat yang Dipilih:</strong> <span id="modalPerangkatValue"></span></p> -->
-                    <!-- Div untuk menampilkan hasil query dari get_perawatan_items.php -->
-                    <input type="hidden" class="form-control" name="perangkatId" id="perangkatId" disabled>
-                    <input type="hidden" class="form-control" name="tahunModal" id="tahunModal" disabled>
-                    <div class="form-group">
-                        <label for="editOrderDate">ID</label>
-                        <input type="text" class="form-control" name="idpc" id="idpc" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="editOrderDate">User</label>
-                        <input type="text" class="form-control" name="user" id="user" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="editOrderDate">Lokasi</label>
-                        <input type="text" class="form-control" name="lokasi" id="lokasi" disabled>
-                    </div>
-                    </hr>
-                    <div class="form-group">
-                        <label for="editOrderDate">Jenis Perawatan</label><br>
-                        <label><input type="checkbox" id="selectAll" onclick="toggleCheckboxes(this)" unchecked> Pilih Semua</label><br>
-                    </div>
-                    <div id="modalCheckboxes">
-                        
+                <form id = "perawatanForm">
+                    <div class="modal-body">
+                        <!-- <p><strong>Perangkat yang Dipilih:</strong> <span id="modalPerangkatValue"></span></p> -->
+                        <!-- Div untuk menampilkan hasil query dari get_perawatan_items.php -->
+                        <input type="hidden" class="form-control" name="perangkatId" id="perangkatId" disabled>
+                        <input type="hidden" class="form-control" name="tahunModal" id="tahunModal" disabled>
+                        <div class="form-group">
+                            <label for="editOrderDate">ID</label>
+                            <input type="text" class="form-control" name="idpc" id="idpc" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="editOrderDate">User</label>
+                            <input type="text" class="form-control" name="user" id="user" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="editOrderDate">Lokasi</label>
+                            <input type="text" class="form-control" name="lokasi" id="lokasi" disabled>
+                        </div>
+                        </hr>
+                        <div class="form-group">
+                            <label for="editOrderDate">Jenis Perawatan</label><br>
+                            <label><input type="checkbox" id="selectAll" onclick="toggleCheckboxes(this)" unchecked> Pilih Semua</label><br>
+                        </div>
+                        <div id="modalCheckboxes">
+                            
 
 
+                        </div>
+                                                </hr>
+                        <div class= "form-group">
+                        <b>Keterangan</b>									  
+                        <textarea cols="45" rows="5" name="keterangan" class="form-control" id="keterangan" placeholder="keterangan" size="15px" placeholder="" ></textarea>    
+                        </div>
+                        <div class="form-group">
+                            <label for="approve_by">Nama User</label>
+                            <input type="text" class="form-control" name="approve_by" id="approve_by" required>
+                        </div>
                     </div>
-                                            </hr>
-                    <div class= "form-group">
-                    <b>Keterangan</b>									  
-                    <textarea cols="45" rows="5" name="keterangan" class="form-control" id="keterangan" placeholder="keterangan" size="15px" placeholder="" ></textarea>    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="simpanPerawatan()">Submit</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -281,6 +287,12 @@ $conn = $koneksi;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
+        document.getElementById('perawatanForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah submit default
+
+            // Lakukan tindakan tambahan di sini, seperti mengirim data melalui AJAX
+            simpanPerawatan();
+        });
 
 
         function toggleCheckboxes(source) {
@@ -383,6 +395,7 @@ $conn = $koneksi;
             document.getElementById("keterangan").value = data.keterangan;
             document.getElementById("perangkatId").value = perangkatValue;
             document.getElementById("tahunModal").value = tahunValue;
+            document.getElementById("approve_by").value = data.approve_by;
             console.log(data.idpc);
             // AJAX untuk mengirim perangkatValue ke server dan mendapatkan data
             $.ajax({
@@ -415,6 +428,7 @@ $conn = $koneksi;
                 const lokasi = document.getElementById("lokasi").value;
                 const keterangan = document.getElementById("keterangan").value;
                 const tipe_perawatan_id = document.getElementById("perangkatId").value;
+                const approve_by = document.getElementById("approve_by").value;
                 const tahun = document.getElementById("tahun").value;
                 console.log(selectedItems);
                 console.log(unselectedItems);
@@ -431,7 +445,8 @@ $conn = $koneksi;
                             tahun:tahun,
                             keterangan:keterangan,
                             selected_items: selectedItems,
-                            unselected_items : unselectedItems
+                            unselected_items : unselectedItems,
+                            approve_by: approve_by
                         },
                         success: function(response) {
                             console.log(response);
@@ -534,7 +549,7 @@ $conn = $koneksi;
                     case 'kamera':
                         url = `manager/lap_perawatanKamera.php?`;
                         break;
-                    case 'fingerSpot':
+                    case 'fingerspot':
                         url = `manager/lap_perawatanFingerSpot.php?`;
                         break;
                     case 'server':
