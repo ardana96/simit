@@ -133,7 +133,7 @@ $this->Ln(7);
 
 $this->setFont('Arial','',11,'C');
 //$this->Cell(10,0,'                                                                                                                                                                                                                                                                                                                            FM-IT-00-25-007 / R3             ');
-$this->CELL(280,5,'FM-IT-00-25.3-010',0,0,'R');
+$this->CELL(280,5,'FM-IT-18-04',0,0,'R');
 $this->Ln(8);
 
 $this->setFont('Arial','',12);
@@ -150,7 +150,7 @@ $this->setFillColor(222,222,222);
 
 $this->CELL(7,17,'NO',1,0,'C');
 $this->CELL(15,17,'Bagian',1,0,'C');
-$this->CELL(20,8,'Tanggal','T',0,'C');
+$this->CELL(20,8,'Bulan','T',0,'C');
 $this->CELL(20,8,'Tanggal','LT',0,'C');
 $this->CELL(22,17,'ID',1,0,'C');
 $this->CELL(40,17,'Nama Perangkat',1,0,'C');
