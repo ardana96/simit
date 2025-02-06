@@ -75,26 +75,10 @@ font-size:18px bold;
  <td>Divisi :</td>
  <td> :</td>
  <td class="isi_combo">
-	<!-- <select  name="pdivisi" id="devisi">
-	 <option selected="selected"></option>
-	 <option value="GARMENT">GARMENT</option>
-	 <option value="TEXTILE">TEXTILE</option>
-	</select> -->
-
-  <select class="form-control" name='pdivisi' id="devisi" required='required'>	 
-    <option> </option>
-            
-            <?	$ss = mysql_query("SELECT * FROM divisi  ");
-                if(mysql_num_rows($ss) > 0){
-            while($datass = mysql_fetch_array($ss)){
-                $namadivisi=$datass['namadivisi'];
-                ?>
-            <option value="<? echo $namadivisi; ?>"> <? echo $namadivisi; ?>
-            </option>
-            
-            <?}}?>
-
-    </select> 
+ <select class="form-control" name="namadivisi" required="required">
+              <option value="EFRATA">EFRATA</option>
+              <option value="RETAIL">RETAIL</option>
+          </select> 
  </td>
 </tr>
 <tr><td colspan="3" align="left"><img src="../img/pdf.png" style="width: 25px; height: 25px;"><input type="submit" name="simpan" value="PREVIEW PDF" ></tr> 

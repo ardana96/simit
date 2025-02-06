@@ -80,7 +80,7 @@ font-size:18px bold;
 	 <option value="GARMENT">GARMENT</option>
 	 <option value="TEXTILE">TEXTILE</option>
 	</select> -->
-  <select class="form-control" name='pdivisi' id="devisi" required='required'>	 
+  <!-- <select class="form-control" name='pdivisi' id="devisi" required='required'>	 
     <option> </option>
             
             <?	$ss = mysql_query("SELECT * FROM divisi  ");
@@ -93,7 +93,12 @@ font-size:18px bold;
             
             <?}}?>
 
-    </select> 
+    </select>  -->
+
+    <select class="form-control" name="namadivisi" required="required">
+              <option value="EFRATA">EFRATA</option>
+              <option value="RETAIL">RETAIL</option>
+          </select>
  </td>
 </tr>
 <tr><td colspan="3" align="left"><img src="../img/pdf.png" style="width: 25px; height: 25px;"><input type="submit" name="simpan" value="PREVIEW PDF" ></tr> 
